@@ -1,0 +1,61 @@
+#include <iostream>
+#include <opencv\cv.h>
+#include <opencv\highgui.h>
+
+using namespace std;
+
+
+int main(int argc, char** argv)
+{
+	CvScalar min1 = cvScalar(80, 0, 0);
+	CvScalar max1 = cvScalar(160, 160, 150);
+	
+	CvScalar min2 = cvScalar(170, 100, 20);
+	CvScalar max2 = cvScalar(180, 255, 255);
+
+
+	cout << "Basla";
+
+	IplImage* img = cvLoadImage("C://Users//Tore//Downloads//11.jpg");
+	IplImage* img2 = cvCreateImage(cvGetSize(img), img->depth, 3);
+	IplImage* img3 = cvCreateImage(cvGetSize(img), img->depth, 1);
+	IplImage* img4 = cvCreateImage(cvGetSize(img), img->depth, 1);
+	IplImage* img5 = cvCreateImage(cvGetSize(img), img->depth, 3);
+
+	cvShowImage("IMG", img);
+	cvSmooth(img, img2, CV_BLUR);
+	cvNot(img, img2);
+	cvShowImage("IMG2", img2);
+
+	//cvCvtColor(img2, img2, CV_RGB2HSV);
+
+	cvInRangeS(img2, min1, max1, img4);
+	//cvInRangeS(img2, min2, max2, img4);
+
+	cvErode(img4, img4, NULL);
+
+	cvCvtColor(img4, img5, CV_GRAY2RGB);
+	cvMul(img, img5, img5);
+	
+		
+	cvShowImage("IMG3", img5);
+
+	//cvOr(img3, img4, img4);
+
+	//img4->nChannels = img->nChannels;
+	/*
+	cvCvtColor(img4, img5, CV_GRAY2RGB);
+	cvSaveImage("C://Users//Tore//Desktop//a.png",img5);
+	cvAnd(img, img5, img5);
+
+	cvSub(img, img5, img5);
+
+	cvShowImage("IMG3", img5);
+
+	*/
+
+
+	cvWaitKey();
+	
+}
+
