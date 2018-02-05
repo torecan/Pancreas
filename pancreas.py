@@ -11,10 +11,7 @@ root = Tk()
 root.title('.:: PancreaS ::.')
 
 class Morphologic():
-	img = cv2.imread('11.jpg')
-	height, width=img.shape[:2]
-	img=cv2.resize(img,(width//2 ,height//2))
-	img2=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+	
 	dir_a1=""
 	init_dir="/"
 	imageFile=""
