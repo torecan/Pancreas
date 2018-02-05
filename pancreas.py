@@ -1,3 +1,5 @@
+# Linux OS and for Opencv 3.x.x
+
 import cv2
 import numpy as np
 from tkinter import *
